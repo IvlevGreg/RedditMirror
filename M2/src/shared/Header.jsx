@@ -1,10 +1,11 @@
 import { hot } from 'react-hot-loader/root'
 import * as React from 'react'
+import styles from './header.scss'
 
 function HeaderComponent() {
   return (
     <header>
-      <h1>Hello React!</h1>
+      <h1 className={styles.title}>Hello React!</h1>
     </header>
   )
 }
