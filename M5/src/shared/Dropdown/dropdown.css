@@ -9,8 +9,9 @@
 
 .list {
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
+  right: 50%;
+  top: 20px;
+  width: min-content;
   height: 100%;
+  transform: translateX(50%);
 }

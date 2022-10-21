@@ -22,6 +22,15 @@ body {
   font-size: 14px;
   line-height: 16px;
   font-family: "Roboto", serif;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+#react_root {
+  height: 100%;
 }
 
 * {
