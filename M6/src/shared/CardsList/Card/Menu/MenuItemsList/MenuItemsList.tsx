@@ -13,27 +13,27 @@ export function MenuItemsList() {
     <ul className={styles.menuItemsList}>
       <li className={styles.menuItem + ' ' + styles.menuItemDekstop}>
         <DropdownCommentsIcon />
-        <span>Комментарии</span>
+        <span className={styles.menuItemText}>Комментарии</span>
       </li>
       <div className={styles.divider}></div>
       <li className={styles.menuItem + ' ' + styles.menuItemDekstop}>
         <DropdownShareIcon />
-        <span>Поделиться</span>
+        <span className={styles.menuItemText}>Поделиться</span>
       </li>
       <div className={styles.divider}></div>
       <li className={styles.menuItem}>
         <DropdownHideIcon />
-        <span>Скрыть</span>
+        <span className={styles.menuItemText}>Скрыть</span>
       </li>
       <div className={styles.divider}></div>
       <li className={styles.menuItem + ' ' + styles.menuItemDekstop}>
         <DropdownSaveIcon />
-        <span>Сохранить</span>
+        <span className={styles.menuItemText}>Сохранить</span>
       </li>
       <div className={styles.divider}></div>
       <li className={styles.menuItem}>
         <DropdownComplainIcon />
-        <span>Пожаловаться</span>
+        <span className={styles.menuItemText}>Пожаловаться</span>
       </li>
     </ul>
   );

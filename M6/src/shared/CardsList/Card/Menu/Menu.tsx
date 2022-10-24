@@ -10,7 +10,7 @@ export function Menu() {
       <Dropdown
         onClose={() => console.log('closed')}
         onOpen={() => console.log('Open')}
-        isOpen={true}
+        isOpen={false}
         button={
           <button className={styles.menuButton}>
             <MenuIcon />

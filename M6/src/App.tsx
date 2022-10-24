@@ -1,7 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
-import styles from './app.css';
 import './main.global.css';
+import styles from './app.css';
 import { CardsList } from './shared/CardsList';
 import { Content } from './shared/Content';
 import { Dropdown } from './shared/Dropdown';

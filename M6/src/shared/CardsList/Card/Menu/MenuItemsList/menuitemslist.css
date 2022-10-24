@@ -12,6 +12,10 @@
   margin-left: 7px;
 }
 
+.menuItemText {
+  color: var(--grey99);
+}
+
 .divider {
   height: 1px;
   width: 100%;

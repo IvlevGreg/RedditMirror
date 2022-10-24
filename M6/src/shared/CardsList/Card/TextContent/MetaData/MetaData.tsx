@@ -7,7 +7,7 @@ export function MetaData() {
     <div className={styles.metaData}>
       <UserLink />
       <span className={styles.createdAt}>
-        <span className={styles.publishedLabel}>опубликовано</span>4 часа назад
+        <span className={styles.publishedLabel}>опубликовано </span>4 часа назад
       </span>
     </div>
   );
