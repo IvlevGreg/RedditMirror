@@ -8,17 +8,19 @@ import { Content } from './shared/Content';
 import { Dropdown } from './shared/Dropdown';
 import { Header } from './shared/Header';
 import { Layout } from './shared/Layout';
+import { tokenContext } from './shared/context/tokenContext';
 
 function AppComponent() {
   const [token] = useToken();
-
+  const { Provider } = tokenContext;
   return (
-    <Layout>
-      <Header token={token} />
-      <Content>
-        <CardsList />
-      </Content>
-      {/* <Dropdown
+    <Provider value={token}>
+      <Layout>
+        <Header />
+        <Content>
+          <CardsList />
+        </Content>
+        {/* <Dropdown
         onClose={() => console.log('closed')}
         onOpen={() => console.log('Open')}
         isOpen={false}
@@ -26,7 +28,8 @@ function AppComponent() {
       >
         <CardsList />
       </Dropdown> */}
-    </Layout>
+      </Layout>
+    </Provider>
   );
 }
 
