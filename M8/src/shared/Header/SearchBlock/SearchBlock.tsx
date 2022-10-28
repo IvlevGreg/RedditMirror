@@ -5,10 +5,12 @@ import { useUserData } from '../../../hooks/useUserData';
 
 export function SearchBlock() {
   const [data] = useUserData();
-
+  console.log(data);
   return (
     <div className={styles.searchBlock}>
       <UserBlock avatarSrc={data.iconImg} username={data.name} />
     </div>
   );
 }
+// const [data] = useUserData();
+// console.log(data);
