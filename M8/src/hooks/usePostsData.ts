@@ -18,10 +18,10 @@ export function usePostsData(): [IUserData] {
         },
       })
       .then((resp) => {
+        // console.log(resp);
+        // const userData = resp.data;
         console.log(resp);
-        const userData = resp.data;
-        console.log(resp.data);
-        setData(userData);
+        // setData(resp);
       })
       .catch(console.log);
   }, [token]);
