@@ -3,11 +3,29 @@ import { MetaData } from './MetaData';
 import styles from './textcontent.css';
 import { Title } from './Title';
 
-export function TextContent() {
+interface ITextContent {
+  imgLink: string;
+  userName: string;
+  publishedDate: string;
+  title: string;
+  postPermaLink: string;
+}
+
+export function TextContent({
+  imgLink,
+  userName,
+  publishedDate,
+  title,
+  postPermaLink,
+}: ITextContent) {
   return (
     <div className={styles.textContent}>
-      <MetaData />
-      <Title />
+      <MetaData
+        imgLink={imgLink}
+        userName={userName}
+        publishedDate={publishedDate}
+      />
+      <Title title={title} postPermaLink={postPermaLink} />
     </div>
   );
 }
