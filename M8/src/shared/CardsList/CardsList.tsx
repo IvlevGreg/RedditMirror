@@ -7,7 +7,6 @@ import 'moment/locale/ru';
 
 export function CardsList() {
   const [data] = usePostsData();
-  // console.log(data);
   function getPublishedTimeFromNow(): string {
     moment.locale('ru');
     return moment(String(data[0].data.created), 'X').fromNow();
@@ -18,7 +17,13 @@ export function CardsList() {
       {data.map((card: IPostData): JSX.Element => {
         return (
           <Card
-            imgLink={card.data.sr_detail.icon_img}
+            imgLink={
+              card.data.sr_detail.icon_img
+              // !== '' &&
+              // card.data.sr_detail.icon_img !== undefined
+              //   ? card.data.sr_detail.icon_img
+              //   : 'https://imageup.ru/img211/4055371/pngwingcom.png'
+            }
             userName={card.data.subreddit}
             publishedDate={getPublishedTimeFromNow()}
             title={card.data.title}
