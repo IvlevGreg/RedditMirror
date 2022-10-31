@@ -12,6 +12,7 @@ export type IPostData = {
     title: string;
     permalink: string;
     url: string;
+    id: string;
   };
 };
 type IPostsData = Array<IPostData>;
@@ -31,6 +32,8 @@ const FirstLoadArray: IPostsData = [
       permalink: '#post-url',
       // for Preview
       url: 'https://i.postimg.cc/NLvtL2GC/Rectangle-14.jpg',
+      // for card
+      id: '123',
     },
   },
 ];

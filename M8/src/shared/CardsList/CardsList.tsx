@@ -17,6 +17,7 @@ export function CardsList() {
       {data.map((card: IPostData): JSX.Element => {
         return (
           <Card
+            key={card.data.id}
             imgLink={
               card.data.sr_detail.icon_img
               // !== '' &&

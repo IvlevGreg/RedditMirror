@@ -31,13 +31,8 @@ export function Card({
         title={title}
         postPermaLink={postPermaLink}
       />
-      {previewLink.includes('.png') ||
-      previewLink.includes('.jpg') ||
-      previewLink.includes('.jpeg') ? (
-        <Preview previewLink={previewLink} />
-      ) : (
-        false
-      )}
+      <Preview previewLink={previewLink} />
+
       <Menu />
       <Controls />
     </li>
