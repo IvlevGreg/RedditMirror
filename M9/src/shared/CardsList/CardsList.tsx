@@ -18,6 +18,7 @@ export function CardsList() {
         return (
           <Card
             key={card.data.id}
+            postId={card.data.id}
             imgLink={
               card.data.sr_detail.icon_img
               // !== '' &&

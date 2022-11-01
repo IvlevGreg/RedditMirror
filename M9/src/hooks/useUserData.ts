@@ -23,7 +23,7 @@ export function useUserData(): [IUserData] {
           console.log(resp.data);
           setData({ name: userData.name, iconImg: userData.icon_img });
         })
-        .catch(console.log);
+        .catch((err) => console.log(err));
     }
   }, [token]);
 

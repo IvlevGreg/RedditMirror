@@ -4,6 +4,7 @@ import styles from './textcontent.css';
 import { Title } from './Title';
 
 interface ITextContent {
+  postId: string;
   imgLink: string;
   userName: string;
   publishedDate: string;
@@ -12,6 +13,7 @@ interface ITextContent {
 }
 
 export function TextContent({
+  postId,
   imgLink,
   userName,
   publishedDate,
@@ -25,7 +27,7 @@ export function TextContent({
         userName={userName}
         publishedDate={publishedDate}
       />
-      <Title title={title} postPermaLink={postPermaLink} />
+      <Title postId={postId} title={title} postPermaLink={postPermaLink} />
     </div>
   );
 }

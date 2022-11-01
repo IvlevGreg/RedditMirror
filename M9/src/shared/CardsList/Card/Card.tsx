@@ -6,6 +6,7 @@ import { Preview } from './Preview';
 import { TextContent } from './TextContent';
 
 interface ICard {
+  postId: string;
   imgLink: string;
   userName: string;
   publishedDate: string;
@@ -15,6 +16,7 @@ interface ICard {
 }
 
 export function Card({
+  postId,
   imgLink,
   userName,
   publishedDate,
@@ -25,6 +27,7 @@ export function Card({
   return (
     <li className={styles.card}>
       <TextContent
+        postId={postId}
         imgLink={imgLink}
         userName={userName}
         publishedDate={publishedDate}

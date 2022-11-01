@@ -12,5 +12,3 @@ export function SearchBlock() {
     </div>
   );
 }
-// const [data] = useUserData();
-// console.log(data);
