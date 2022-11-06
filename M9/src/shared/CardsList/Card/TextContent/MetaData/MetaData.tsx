@@ -6,14 +6,22 @@ interface IMetaData {
   imgLink: string;
   userName: string;
   publishedDate: string;
+  isPublished?: boolean;
 }
 
-export function MetaData({ imgLink, userName, publishedDate }: IMetaData) {
+export function MetaData({
+  imgLink,
+  userName,
+  publishedDate,
+  isPublished = true,
+}: IMetaData) {
   return (
     <div className={styles.metaData}>
       <UserLink imgLink={imgLink} userName={userName} />
       <span className={styles.createdAt}>
-        <span className={styles.publishedLabel}>опубликовано </span>
+        {isPublished ? (
+          <span className={styles.publishedLabel}>опубликовано </span>
+        ) : null}
         {publishedDate}
       </span>
     </div>

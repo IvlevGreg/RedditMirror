@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './card.css';
 import { Controls } from './Controls';
 import { Menu } from './Menu';
@@ -33,6 +33,7 @@ export function Card({
         publishedDate={publishedDate}
         title={title}
         postPermaLink={postPermaLink}
+        previewLink={previewLink}
       />
       <Preview previewLink={previewLink} />
 

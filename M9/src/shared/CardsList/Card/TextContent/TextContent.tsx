@@ -10,6 +10,7 @@ interface ITextContent {
   publishedDate: string;
   title: string;
   postPermaLink: string;
+  previewLink: string;
 }
 
 export function TextContent({
@@ -19,6 +20,7 @@ export function TextContent({
   publishedDate,
   title,
   postPermaLink,
+  previewLink,
 }: ITextContent) {
   return (
     <div className={styles.textContent}>
@@ -27,7 +29,13 @@ export function TextContent({
         userName={userName}
         publishedDate={publishedDate}
       />
-      <Title postId={postId} title={title} postPermaLink={postPermaLink} />
+      <Title
+        postId={postId}
+        title={title}
+        userName={userName}
+        postPermaLink={postPermaLink}
+        previewLink={previewLink}
+      />
     </div>
   );
 }

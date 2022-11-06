@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { BaseSyntheticEvent } from 'react';
 import styles from './dropdown.css';
+import { DropdownContent } from './DropdownContent';
 
 interface IDropdownProps {
   button: React.ReactNode;
@@ -24,7 +25,13 @@ export function Dropdown({
     () => (isDropdownOpen ? onOpen() : onClose()),
     [isDropdownOpen]
   );
-  const handleOpen = () => {
+  const handleOpen = (e: any) => {
+    const node = document.getElementById('dropdown_root');
+    if (!node) return null;
+    node.style.position = 'absolute';
+    node.style.top = `${e.pageY}px`;
+    node.style.left = `${e.pageX}px`;
+
     setIsDropdownOpen(!isDropdownOpen);
     // if (isOpen === undefined) {
     //   setIsDropdownOpen(!isDropdownOpen);
@@ -37,7 +44,7 @@ export function Dropdown({
       {isDropdownOpen && (
         <div className={styles.listContainer}>
           <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-            {children}
+            <DropdownContent children={children} />
           </div>
         </div>
       )}

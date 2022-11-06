@@ -1,33 +1,73 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { usePostData } from '../../hooks/usePostData';
+import { usePostData, ICommentData } from '../../hooks/usePostData';
 import { usePostEffect } from '../../hooks/usePostEffect';
+import { getPublishedTimeFromNow } from '../../modules';
 import { CommentForm } from '../CommentForm';
+import { Comment } from './Comment';
+import { PostContent } from './Comment/PostContent';
+
 import styles from './post.css';
 
 export interface IPost {
   postId: string;
+  userName: string;
+  title: string;
+  previewLink: string;
   onClose?: () => void;
 }
 
 export function Post(props: IPost) {
   const [ref] = usePostEffect(props);
-  const [data] = usePostData(props.postId);
-  console.log(data);
+  const [data] = usePostData(props.postId, props.userName);
 
   const node = document.getElementById('modal_root');
   if (!node) return null;
 
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>
-      <h2>Заголовок</h2>
-      <div className={styles.content}>
-        <p>Абзац</p>
-        <p>Абзац</p>
-        <p>Абзац</p>
-      </div>
+      <h2 className={styles.title}>{props.title}</h2>
+      <PostContent previewLink={props.previewLink} />
       <CommentForm />
+      {/* {data.map((tree): (JSX.Element | null)[] => {
+        return tree.data.children.map((comment): JSX.Element | null => {
+          if (comment.data.body) {
+            return (
+              <Comment author={comment.data.author} body={comment.data.body} />
+            );
+          } else {
+            return null;
+          }
+        });
+      })} */}
+
+      {data.data.children.map((comment): JSX.Element | null => {
+        if (comment.data.body) {
+          return (
+            <Comment
+              key={comment.data.id}
+              author={comment.data.author}
+              body={comment.data.body}
+              publishedDate={getPublishedTimeFromNow(comment.data.created)}
+            />
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>,
     node
   );
 }
+
+// function commentCreate(data: ICommentsData) {
+//   return data.map((tree) => {
+//     tree.data.children.forEach((comment) => {
+//       if (comment.data.body) {
+//         return (
+//           <Comment author={comment.data.author} body={comment.data.body} />
+//         );
+//       }
+//     });
+//   });
+// }

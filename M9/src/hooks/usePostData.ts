@@ -2,22 +2,28 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
 
-// export type IPostData = {
-//   data: {
-//     subreddit: string;
-//     sr_detail: {
-//       icon_img: string;
-//     };
-//     created: number;
-//     title: string;
-//     permalink: string;
-//     url: string;
-//     id: string;
-//   };
-// };
-// type IPostsData = Array<IPostData>;
+export type ICommentData = {
+  data: {
+    children: [
+      {
+        data: {
+          author: string;
+          body?: string;
+          id: string;
+          created: number;
+          replies?: {
+            data: {
+              children: Array<ICommentData>;
+            };
+          };
+        };
+      }
+    ];
+  };
+};
+export type ICommentsData = ICommentData;
 
-// const FirstLoadArray: IPostsData = [
+// const FirstLoadArray: ICommentsData = [
 //   {
 //     data: {
 //       //for UserLink
@@ -37,21 +43,28 @@ import { tokenContext } from '../shared/context/tokenContext';
 //     },
 //   },
 // ];
-// `https://oauth.reddit.com/${subreddit}/comments/${postId}`
 
-export function usePostData(postId: string) {
-  const [data, setData] = useState();
+export function usePostData(postId: string, userName: string) {
+  const [data, setData] = useState<ICommentsData>({
+    data: {
+      children: [
+        {
+          data: {
+            author: 'string',
+            id: '1',
+            created: 1667637204,
+          },
+        },
+      ],
+    },
+  });
   const token = useContext(tokenContext);
 
   useEffect(() => {
     axios
-      .get(`https://oauth.reddit.com/r/meirl/comments/yipt7s`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(`https://api.reddit.com/r/${userName}/comments/${postId}`)
       .then((resp) => {
-        const postsList = resp.data.data.children;
+        const postsList = resp.data[1];
         console.log(postsList);
         setData(postsList);
       })

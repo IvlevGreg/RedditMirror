@@ -5,10 +5,18 @@ import styles from './title.css';
 interface ITitle {
   postId: string;
   title: string;
+  userName: string;
   postPermaLink: string;
+  previewLink: string;
 }
 
-export function Title({ postId, title, postPermaLink }: ITitle) {
+export function Title({
+  postId,
+  title,
+  postPermaLink,
+  userName,
+  previewLink,
+}: ITitle) {
   const URL_PERMA_LINK_PREFIX = 'https://www.reddit.com/';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +36,9 @@ export function Title({ postId, title, postPermaLink }: ITitle) {
       {isModalOpen && (
         <Post
           postId={postId}
+          userName={userName}
+          title={title}
+          previewLink={previewLink}
           onClose={() => {
             setIsModalOpen(false);
           }}

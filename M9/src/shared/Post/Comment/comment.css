@@ -1,0 +1,12 @@
+.item {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.CommentText {
+  margin-top: 10px;
+}

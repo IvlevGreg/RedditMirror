@@ -27,6 +27,7 @@ export function CommentForm() {
         // rows="10"
         className={styles.input}
       ></textarea>
+
       <button className={styles.button}>Комментировать</button>
     </form>
   );
