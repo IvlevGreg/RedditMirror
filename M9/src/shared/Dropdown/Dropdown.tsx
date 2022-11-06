@@ -1,6 +1,7 @@
 import React, { BaseSyntheticEvent } from 'react';
 import styles from './dropdown.css';
 import { DropdownContent } from './DropdownContent';
+import ReactDOM from 'react-dom';
 
 interface IDropdownProps {
   button: React.ReactNode;
@@ -25,7 +26,7 @@ export function Dropdown({
     () => (isDropdownOpen ? onOpen() : onClose()),
     [isDropdownOpen]
   );
-  const handleOpen = (e: any) => {
+  const handleOpen = (e: React.MouseEvent) => {
     const node = document.getElementById('dropdown_root');
     if (!node) return null;
     node.style.position = 'absolute';
@@ -38,16 +39,25 @@ export function Dropdown({
     // }
   };
 
-  return (
-    <div className={styles.container}>
-      <div onClick={handleOpen}>{button}</div>
-      {isDropdownOpen && (
-        <div className={styles.listContainer}>
-          <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
-            <DropdownContent children={children} />
+  if (typeof window !== 'undefined') {
+    const node = document.getElementById('dropdown_root');
+    if (!node) return null;
+    return ReactDOM.createPortal(
+      <div className={styles.container}>
+        <div onClick={handleOpen}>{button}</div>
+        {isDropdownOpen && (
+          <div className={styles.listContainer}>
+            <div
+              className={styles.list}
+              onClick={() => setIsDropdownOpen(false)}
+            >
+              {children}
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        )}
+      </div>,
+      node
+    );
+  }
+  return null;
 }
