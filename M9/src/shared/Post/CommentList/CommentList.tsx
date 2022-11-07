@@ -13,7 +13,6 @@ interface ICommentList {
 function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
   return postData.data.children.map((comment): JSX.Element | null => {
     if (comment.data.body) {
-      // let nestedComment: (JSX.Element | null)[] = [null]
       if (comment.data.replies && comment.data.replies.kind !== 'more') {
         return (
           <Comment
@@ -31,7 +30,6 @@ function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
           author={comment.data.author}
           body={comment.data.body}
           publishedDate={getPublishedTimeFromNow(comment.data.created)}
-          // children={nestedComment}
         />
       );
     } else {

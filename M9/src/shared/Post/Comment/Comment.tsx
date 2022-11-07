@@ -30,7 +30,6 @@ export function Comment({ author, body, publishedDate, children }: IComment) {
       <p className={styles.CommentText}>{body}</p>
       <CommentReplyList />
       {children}
-      {/* <CommentList postData={children}/> */}
     </li>
   );
 }

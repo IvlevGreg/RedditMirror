@@ -21,6 +21,11 @@
   bottom: 0;
 }
 
+.karmaCounterContainer > div {
+  display: flex;
+  flex-direction: column;
+}
+
 .leftBorder {
   position: absolute;
   top: 40px;
