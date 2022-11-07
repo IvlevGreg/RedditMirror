@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { commentContext } from '../context/commentContext';
+import { CommentAdditionalButtons } from './CommentAdditionalButtons';
 import styles from './commentform.css';
 
 export function CommentForm() {
@@ -27,8 +28,10 @@ export function CommentForm() {
         // rows="10"
         className={styles.input}
       ></textarea>
-
-      <button className={styles.button}>Комментировать</button>
+      <div className={styles.buttonsContainer}>
+        <CommentAdditionalButtons />
+        <button className={styles.button}>Комментировать</button>
+      </div>
     </form>
   );
 }

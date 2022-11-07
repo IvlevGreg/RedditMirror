@@ -1,7 +1,6 @@
 import React from 'react';
-import { KarmaCounter } from '../../CardsList/Card/Controls/KarmaCounter';
-import { MetaData } from '../../CardsList/Card/TextContent/MetaData';
-import { CommentList } from '../CommentList';
+import { KarmaCounter } from '../../../CardsList/Card/Controls/KarmaCounter';
+import { MetaData } from '../../../CardsList/Card/TextContent/MetaData';
 import styles from './comment.css';
 import { CommentReplyList } from './CommentReplyList';
 

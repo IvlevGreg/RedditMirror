@@ -2,10 +2,8 @@ import React from 'react';
 import {
   DropdownCommentsIcon,
   DropdownComplainIcon,
-  DropdownHideIcon,
-  DropdownSaveIcon,
   DropdownShareIcon,
-} from '../../../Icons';
+} from '../../../../Icons';
 import styles from './commentreplylist.css';
 
 export function CommentReplyList() {

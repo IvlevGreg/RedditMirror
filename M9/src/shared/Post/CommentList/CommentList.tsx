@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import { ICommentData, ICommentsData } from '../../../hooks/usePostData';
 import { getPublishedTimeFromNow } from '../../../modules';
 import { KarmaCounter } from '../../CardsList/Card/Controls/KarmaCounter';
-import { Comment } from '../Comment';
+import { Comment } from './Comment';
 
 import styles from './commentlist.css';
 

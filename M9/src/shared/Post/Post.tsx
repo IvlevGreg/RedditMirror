@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { usePostData, ICommentData } from '../../hooks/usePostData';
 import { usePostEffect } from '../../hooks/usePostEffect';
-import { getPublishedTimeFromNow } from '../../modules';
 import { CommentForm } from '../CommentForm';
-import { Comment } from './Comment';
-import { PostContent } from './Comment/PostContent';
+import { PostContent } from './CommentList/Comment/PostContent';
 import { CommentList } from './CommentList';
 
 import styles from './post.css';
