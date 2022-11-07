@@ -42,22 +42,21 @@ export function Dropdown({
   if (typeof window !== 'undefined') {
     const node = document.getElementById('dropdown_root');
     if (!node) return null;
-    return ReactDOM.createPortal(
+    return (
+      // ReactDOM.createPortal(
       <div className={styles.container}>
         <div onClick={handleOpen}>{button}</div>
         {isDropdownOpen && (
-          <div className={styles.listContainer}>
-            <div
-              className={styles.list}
-              onClick={() => setIsDropdownOpen(false)}
-            >
-              {children}
-            </div>
-          </div>
+          <DropdownContent
+            children={children}
+            setIsDropdownOpen={setIsDropdownOpen}
+          />
         )}
-      </div>,
-      node
+      </div>
     );
+    // ,
+    // node
+    // );
   }
   return null;
 }
