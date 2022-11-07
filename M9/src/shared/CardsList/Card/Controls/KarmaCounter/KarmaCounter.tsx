@@ -1,7 +1,11 @@
 import React from 'react';
 import styles from './karmacounter.css';
 
-export function KarmaCounter() {
+interface IKarmaCounter {
+  isKarmaValue?: boolean;
+}
+
+export function KarmaCounter({ isKarmaValue = true }: IKarmaCounter) {
   return (
     <div className={styles.karmaCounter}>
       <button className={styles.up}>
@@ -15,7 +19,7 @@ export function KarmaCounter() {
           <path d="M9.5 0L0 10H19L9.5 0Z" fill="#D9D9D9" />
         </svg>
       </button>
-      <span className={styles.karmaValue}>123</span>
+      {isKarmaValue && <span className={styles.karmaValue}>123</span>}
       <button className={styles.down}>
         <svg
           width="19"

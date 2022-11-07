@@ -11,15 +11,12 @@ export type ICommentData = {
           body?: string;
           id: string;
           created: number;
-          replies?: {
-            data: {
-              children: Array<ICommentData>;
-            };
-          };
+          replies?: ICommentData;
         };
       }
     ];
   };
+  kind: string;
 };
 export type ICommentsData = ICommentData;
 
@@ -57,6 +54,7 @@ export function usePostData(postId: string, userName: string) {
         },
       ],
     },
+    kind: 'Listining',
   });
   const token = useContext(tokenContext);
 

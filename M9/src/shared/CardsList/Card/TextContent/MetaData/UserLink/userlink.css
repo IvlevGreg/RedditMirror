@@ -23,6 +23,9 @@
   .userLink {
     padding: 0 0 0 5px;
   }
+  .userLinkNoRevers {
+    padding: 0 6px 0 0;
+  }
 }
 
 @media all and (min-width: 1540px) {

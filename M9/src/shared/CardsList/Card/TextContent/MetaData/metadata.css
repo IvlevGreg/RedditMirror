@@ -22,6 +22,11 @@
     line-height: 16px;
   }
 
+  .metaDataNoRevers {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
   .publishedLabel {
     display: inline;
   }

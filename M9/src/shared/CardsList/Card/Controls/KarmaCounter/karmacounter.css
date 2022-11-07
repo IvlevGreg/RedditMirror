@@ -1,8 +1,9 @@
-.karmaCounter > * + * {
+/* .karmaCounter > * + * {
   padding: 0 0 0 4px;
-}
+} */
 
 .karmaValue {
+  padding: 0 4px;
   color: var(--greyC4);
   font-size: 12px;
   line-height: 14px;
@@ -12,6 +13,12 @@
   transform: rotate(180deg);
 }
 
+.up,
+.down {
+  width: max-content;
+  height: max-content;
+}
+
 @media all and (min-width: 1024px) {
   .karmaCounter {
     display: flex;
@@ -19,11 +26,12 @@
     justify-content: center;
     flex-flow: column nowrap;
   }
-  .karmaCounter > * + * {
+  /* .karmaCounter > * + * {
     padding: 7px 0 0;
-  }
+  } */
 
   .karmaValue {
+    padding: 7px 0;
     font-size: 14px;
     line-height: 16px;
     color: var(--black);

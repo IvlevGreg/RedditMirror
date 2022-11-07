@@ -7,6 +7,7 @@ interface IMetaData {
   userName: string;
   publishedDate: string;
   isPublished?: boolean;
+  isReverse?: boolean;
 }
 
 export function MetaData({
@@ -14,10 +15,13 @@ export function MetaData({
   userName,
   publishedDate,
   isPublished = true,
+  isReverse = false,
 }: IMetaData) {
   return (
-    <div className={styles.metaData}>
-      <UserLink imgLink={imgLink} userName={userName} />
+    <div
+      className={styles.metaData + ' ' + (isReverse && styles.metaDataNoRevers)}
+    >
+      <UserLink imgLink={imgLink} userName={userName} isReverse={isReverse} />
       <span className={styles.createdAt}>
         {isPublished ? (
           <span className={styles.publishedLabel}>опубликовано </span>

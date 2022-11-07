@@ -1,6 +1,9 @@
 .item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+  padding-top: 10px;
   list-style: none;
-  margin-bottom: 15px;
 }
 
 .item:last-child {
@@ -8,5 +11,21 @@
 }
 
 .CommentText {
-  margin-top: 10px;
+  margin: 10px 0;
+}
+
+.karmaCounterContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.leftBorder {
+  position: absolute;
+  top: 40px;
+  left: 6.5px;
+  bottom: 0;
+  width: 3px;
+  background-color: #d9d9d9;
 }

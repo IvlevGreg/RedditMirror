@@ -6,6 +6,7 @@ import { getPublishedTimeFromNow } from '../../modules';
 import { CommentForm } from '../CommentForm';
 import { Comment } from './Comment';
 import { PostContent } from './Comment/PostContent';
+import { CommentList } from './CommentList';
 
 import styles from './post.css';
 
@@ -19,10 +20,27 @@ export interface IPost {
 
 export function Post(props: IPost) {
   const [ref] = usePostEffect(props);
-  const [data] = usePostData(props.postId, props.userName);
+  const [postData] = usePostData(props.postId, props.userName);
 
   const node = document.getElementById('modal_root');
   if (!node) return null;
+
+  function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
+    return postData.data.children.map((comment): JSX.Element | null => {
+      if (comment.data.body) {
+        return (
+          <Comment
+            key={comment.data.id}
+            author={comment.data.author}
+            body={comment.data.body}
+            publishedDate={getPublishedTimeFromNow(comment.data.created)}
+          />
+        );
+      } else {
+        return null;
+      }
+    });
+  }
 
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>
@@ -41,7 +59,7 @@ export function Post(props: IPost) {
         });
       })} */}
 
-      {data.data.children.map((comment): JSX.Element | null => {
+      {/* {postData.data.children.map((comment): JSX.Element | null => {
         if (comment.data.body) {
           return (
             <Comment
@@ -54,7 +72,9 @@ export function Post(props: IPost) {
         } else {
           return null;
         }
-      })}
+      })} */}
+      <CommentList postData={postData} />
+      {/* {commentCreate(postData).map((comment): JSX.Element | null => comment)} */}
     </div>,
     node
   );
