@@ -13,23 +13,18 @@ interface ICommentList {
 function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
   return postData.data.children.map((comment): JSX.Element | null => {
     if (comment.data.body) {
-      if (comment.data.replies && comment.data.replies.kind !== 'more') {
-        return (
-          <Comment
-            key={comment.data.id}
-            author={comment.data.author}
-            body={comment.data.body}
-            publishedDate={getPublishedTimeFromNow(comment.data.created)}
-            children={<CommentList postData={comment.data.replies} />}
-          />
-        );
-      }
       return (
         <Comment
           key={comment.data.id}
           author={comment.data.author}
           body={comment.data.body}
           publishedDate={getPublishedTimeFromNow(comment.data.created)}
+          // рекурсия
+          children={
+            comment.data.replies && comment.data.replies.kind !== 'more' ? (
+              <CommentList postData={comment.data.replies} />
+            ) : undefined
+          }
         />
       );
     } else {
