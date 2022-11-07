@@ -16,6 +16,7 @@
     "@types/jest": "^29.1.2",
     "@types/react": "^17.0.42",
     "@types/react-dom": "^17.0.14",
+    "@types/react-redux": "^7.1.24",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.5.2",
@@ -41,6 +42,9 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.20",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9"
   }
 }
