@@ -2,6 +2,7 @@
   position: absolute;
   left: 50%;
   top: 10%;
+  height: 100vh;
   transform: translateX(-50%);
   z-index: 1000;
   overflow-x: hidden;
@@ -11,7 +12,7 @@
   border-radius: 7px;
   min-width: 200px;
   min-height: 160px;
-  max-width: 80%;
+  width: 70%;
   padding: 24px;
   margin-bottom: 25px;
 }

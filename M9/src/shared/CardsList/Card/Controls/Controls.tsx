@@ -4,10 +4,14 @@ import { CommentButton } from './CommentButton';
 import styles from './controls.css';
 import { KarmaCounter } from './KarmaCounter';
 
-export function Controls() {
+interface IControls {
+  karmaValue: number;
+}
+
+export function Controls({ karmaValue }: IControls) {
   return (
     <div className={styles.controls}>
-      <KarmaCounter />
+      <KarmaCounter karmaValue={karmaValue} />
       <CommentButton />
       <Actions />
     </div>

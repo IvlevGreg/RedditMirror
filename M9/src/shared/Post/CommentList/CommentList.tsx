@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { ICommentData, ICommentsData } from '../../../hooks/usePostData';
 import { getPublishedTimeFromNow } from '../../../modules';
 import { KarmaCounter } from '../../CardsList/Card/Controls/KarmaCounter';

@@ -8,9 +8,10 @@ import { Header } from './shared/Header';
 import { Layout } from './shared/Layout';
 import { tokenContext } from './shared/context/tokenContext';
 import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { rootReducer } from './store';
+import { rootReducer } from './redux/rootReducer';
+import { LoaderSpinner } from './shared/LoaderSpinner';
 
 const store = createStore(rootReducer, composeWithDevTools());
 

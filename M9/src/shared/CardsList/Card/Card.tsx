@@ -13,6 +13,7 @@ interface ICard {
   title: string;
   postPermaLink: string;
   previewLink: string;
+  karmaValue: number;
 }
 
 export function Card({
@@ -23,6 +24,7 @@ export function Card({
   title,
   postPermaLink,
   previewLink,
+  karmaValue,
 }: ICard) {
   return (
     <li className={styles.card}>
@@ -38,7 +40,7 @@ export function Card({
       <Preview previewLink={previewLink} />
 
       <Menu />
-      <Controls />
+      <Controls karmaValue={karmaValue} />
     </li>
   );
 }

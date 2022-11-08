@@ -3,9 +3,13 @@ import styles from './karmacounter.css';
 
 interface IKarmaCounter {
   isKarmaValue?: boolean;
+  karmaValue?: number;
 }
 
-export function KarmaCounter({ isKarmaValue = true }: IKarmaCounter) {
+export function KarmaCounter({
+  isKarmaValue = true,
+  karmaValue,
+}: IKarmaCounter) {
   return (
     <div className={styles.karmaCounter}>
       <button className={styles.up}>
@@ -19,7 +23,7 @@ export function KarmaCounter({ isKarmaValue = true }: IKarmaCounter) {
           <path d="M9.5 0L0 10H19L9.5 0Z" fill="#D9D9D9" />
         </svg>
       </button>
-      {isKarmaValue && <span className={styles.karmaValue}>123</span>}
+      {isKarmaValue && <span className={styles.karmaValue}>{karmaValue}</span>}
       <button className={styles.down}>
         <svg
           width="19"

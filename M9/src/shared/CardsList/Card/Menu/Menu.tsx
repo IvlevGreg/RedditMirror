@@ -10,11 +10,21 @@ export function Menu() {
   return (
     <div className={styles.menu}>
       <Dropdown
+        onOpen={() => console.log('open')}
         onClose={() => console.log('closed')}
-        onOpen={() => console.log('Open')}
         isOpen={false}
+        dropdownContentRootId={'dropdown_root'}
         button={
-          <button className={styles.menuButton}>
+          <button
+            onClick={(e: React.MouseEvent) => {
+              const node = document.getElementById('dropdown_root');
+              if (!node) return;
+              node.style.position = 'absolute';
+              node.style.top = `${e.pageY}px`;
+              node.style.left = `${e.pageX}px`;
+            }}
+            className={styles.menuButton}
+          >
             <MenuIcon />
           </button>
         }

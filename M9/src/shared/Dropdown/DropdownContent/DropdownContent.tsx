@@ -5,12 +5,14 @@ import ReactDOM from 'react-dom';
 interface IDropdownContent {
   children: React.ReactNode;
   setIsDropdownOpen: (a: boolean) => void;
+  dropdownContentRootId: string;
 }
 export function DropdownContent({
   children,
   setIsDropdownOpen,
+  dropdownContentRootId,
 }: IDropdownContent) {
-  const node = document.getElementById('dropdown_root');
+  const node = document.getElementById(dropdownContentRootId);
   if (!node) return null;
   return ReactDOM.createPortal(
     <>

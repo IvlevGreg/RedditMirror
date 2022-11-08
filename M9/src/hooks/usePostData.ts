@@ -20,27 +20,6 @@ export type ICommentData = {
 };
 export type ICommentsData = ICommentData;
 
-// const FirstLoadArray: ICommentsData = [
-//   {
-//     data: {
-//       //for UserLink
-//       subreddit: 'Дмитрий Гришин',
-//       sr_detail: {
-//         icon_img: 'https://i.postimg.cc/Z5Y04X9k/Ellipse-1.png',
-//       },
-//       //for MetaData
-//       created: 1666977358,
-//       //for Title
-//       title: 'Следует отметить, что новая модель организационной',
-//       permalink: '#post-url',
-//       // for Preview
-//       url: 'https://i.postimg.cc/NLvtL2GC/Rectangle-14.jpg',
-//       // for card
-//       id: '123',
-//     },
-//   },
-// ];
-
 export function usePostData(postId: string, userName: string) {
   const [data, setData] = useState<ICommentsData>({
     data: {

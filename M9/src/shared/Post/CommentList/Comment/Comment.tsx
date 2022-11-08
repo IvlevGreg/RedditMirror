@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { LegacyRef } from 'react';
 import { KarmaCounter } from '../../../CardsList/Card/Controls/KarmaCounter';
 import { MetaData } from '../../../CardsList/Card/TextContent/MetaData';
 import styles from './comment.css';
@@ -27,7 +27,7 @@ export function Comment({ author, body, publishedDate, children }: IComment) {
       />
 
       <p className={styles.CommentText}>{body}</p>
-      <CommentReplyList />
+      <CommentReplyList userName={author} />
       {children}
     </li>
   );
