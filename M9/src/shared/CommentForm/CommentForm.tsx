@@ -1,23 +1,32 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { RootState } from '../../redux/types';
-import { updateComment } from '../../redux/actions';
+import { commentCreate, commentUpdate } from '../../redux/actions';
 
 import { CommentAdditionalButtons } from './CommentAdditionalButtons';
 import styles from './commentform.css';
 
 interface IcommentForm {
   userName?: string;
+  postId: string;
 }
 
-export function CommentForm({ userName }: IcommentForm) {
-  const value = useSelector<RootState, string>(
-    (state) => state.commentsReducer.commentText
-  );
+export function CommentForm({ userName = '', postId }: IcommentForm) {
+  const [commentText, setCommentText] = useState(userName);
+
+  // const value = useSelector<RootState, string>(
+  //   (state) => state.commentsReducer.commentText
+  // );
   const dispatch = useDispatch();
 
-  function handleChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    dispatch(updateComment(event.target.value));
+  function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    setCommentText(e.target.value);
   }
 
   // if (userName) {
@@ -25,16 +34,25 @@ export function CommentForm({ userName }: IcommentForm) {
   //   dispatch(updateComment(`${userName},`));
   // }
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-    // console.log(ref.current?.value);
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    dispatch(commentCreate(commentText, postId));
   }
+
+  function handleCommentClick() {
+    console.log(`comment:  ${commentText}`);
+    setCommentText('');
+  }
+
+  useEffect(() => {
+    dispatch(dispatch(commentUpdate(`${userName},`, postId)));
+  }, []);
 
   return (
     <form action="" className={styles.form} onSubmit={handleSubmit}>
       <textarea
         // ref={ref}
-        value={value}
+        value={commentText}
         onChange={handleChange}
         // name=""
         // id=""
@@ -44,7 +62,9 @@ export function CommentForm({ userName }: IcommentForm) {
       ></textarea>
       <div className={styles.buttonsContainer}>
         <CommentAdditionalButtons />
-        <button className={styles.button}>Комментировать</button>
+        <button className={styles.button} onClick={handleCommentClick}>
+          Комментировать
+        </button>
       </div>
     </form>
   );

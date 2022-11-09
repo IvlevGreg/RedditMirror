@@ -1,13 +1,13 @@
 import React from 'react';
 import { ICommentData, ICommentsData } from '../../../hooks/usePostData';
 import { getPublishedTimeFromNow } from '../../../modules';
-import { KarmaCounter } from '../../CardsList/Card/Controls/KarmaCounter';
 import { Comment } from './Comment';
 
 import styles from './commentlist.css';
 
 interface ICommentList {
   postData: ICommentData;
+  postId: string;
 }
 
 function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
@@ -18,11 +18,15 @@ function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
           key={comment.data.id}
           author={comment.data.author}
           body={comment.data.body}
+          postId={comment.data.id}
           publishedDate={getPublishedTimeFromNow(comment.data.created)}
           // рекурсия
           children={
             comment.data.replies && comment.data.replies.kind !== 'more' ? (
-              <CommentList postData={comment.data.replies} />
+              <CommentList
+                postId={comment.data.id}
+                postData={comment.data.replies}
+              />
             ) : undefined
           }
         />
@@ -33,7 +37,7 @@ function commentCreate(postData: ICommentData): (JSX.Element | null)[] {
   });
 }
 
-export function CommentList({ postData }: ICommentList) {
+export function CommentList({ postData, postId }: ICommentList) {
   return (
     <ul className={styles.commentsList}>
       {commentCreate(postData).map((comment): JSX.Element | null => comment)}

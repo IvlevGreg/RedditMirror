@@ -28,6 +28,10 @@ export function Title({
         className={styles.postLink}
         onClick={() => {
           setIsModalOpen(!isModalOpen);
+
+          isModalOpen
+            ? (document.body.style.overflow = 'initial')
+            : (document.body.style.overflow = 'hidden');
         }}
       >
         {title}
@@ -40,6 +44,7 @@ export function Title({
           title={title}
           previewLink={previewLink}
           onClose={() => {
+            document.body.style.overflow = 'initial';
             setIsModalOpen(false);
           }}
         />

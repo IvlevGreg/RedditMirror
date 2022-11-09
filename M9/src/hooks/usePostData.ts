@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
+import { useDispatch } from 'react-redux';
+import { loaderCommentsOff, loaderCommentsOn } from '../redux/actions';
 
 export type ICommentData = {
   data: {
@@ -36,14 +38,17 @@ export function usePostData(postId: string, userName: string) {
     kind: 'Listining',
   });
   const token = useContext(tokenContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(loaderCommentsOn());
     axios
       .get(`https://api.reddit.com/r/${userName}/comments/${postId}`)
       .then((resp) => {
         const postsList = resp.data[1];
         console.log(postsList);
         setData(postsList);
+        dispatch(loaderCommentsOff());
       })
       .catch(console.log);
   }, [token]);

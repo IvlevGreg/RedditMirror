@@ -1,6 +1,6 @@
 import React, { LegacyRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateComment } from '../../../../../redux/actions';
+import { commentUpdate } from '../../../../../redux';
 import { CommentForm } from '../../../../CommentForm';
 import {
   DropdownCommentsIcon,
@@ -11,9 +11,10 @@ import styles from './commentreplylist.css';
 
 interface ICommentReplyList {
   userName?: string;
+  postId: string;
 }
 
-export function CommentReplyList({ userName }: ICommentReplyList) {
+export function CommentReplyList({ userName, postId }: ICommentReplyList) {
   let isOpen = false;
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
@@ -21,7 +22,7 @@ export function CommentReplyList({ userName }: ICommentReplyList) {
 
   const handleOpen = (e: React.MouseEvent) => {
     setIsDropdownOpen(!isDropdownOpen);
-    dispatch(updateComment(`${userName},`));
+    dispatch(commentUpdate(`${userName},`, postId));
   };
 
   return (
@@ -59,7 +60,7 @@ export function CommentReplyList({ userName }: ICommentReplyList) {
           </button>
         </li>
       </ul>
-      {isDropdownOpen && <CommentForm />}
+      {isDropdownOpen && <CommentForm postId={postId} />}
     </>
   );
 }

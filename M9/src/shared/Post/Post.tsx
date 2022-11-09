@@ -5,6 +5,7 @@ import { usePostEffect } from '../../hooks/usePostEffect';
 import { CommentForm } from '../CommentForm';
 import { PostContent } from './CommentList/Comment/PostContent';
 import { CommentList } from './CommentList';
+import { LoaderComments } from '../LoaderComments';
 
 import styles from './post.css';
 
@@ -27,8 +28,9 @@ export function Post(props: IPost) {
     <div className={styles.modal} ref={ref}>
       <h2 className={styles.title}>{props.title}</h2>
       <PostContent previewLink={props.previewLink} />
-      <CommentForm />
-      <CommentList postData={postData} />
+      <CommentForm postId={props.postId} />
+      <LoaderComments />
+      <CommentList postData={postData} postId={props.postId} />
     </div>,
     node
   );

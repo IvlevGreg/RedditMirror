@@ -9,9 +9,16 @@ interface IComment {
   body: string;
   publishedDate: string;
   children?: JSX.Element;
+  postId: string;
 }
 
-export function Comment({ author, body, publishedDate, children }: IComment) {
+export function Comment({
+  author,
+  body,
+  publishedDate,
+  children,
+  postId,
+}: IComment) {
   return (
     <li className={styles.item}>
       <div className={styles.karmaCounterContainer}>
@@ -27,7 +34,7 @@ export function Comment({ author, body, publishedDate, children }: IComment) {
       />
 
       <p className={styles.CommentText}>{body}</p>
-      <CommentReplyList userName={author} />
+      <CommentReplyList userName={author} postId={postId} />
       {children}
     </li>
   );

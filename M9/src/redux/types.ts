@@ -1,18 +1,6 @@
-export const UPDATE_COMMENT = 'UPDATE_COMMENT';
-
-export type RootCommentsState = {
-  commentText: string;
-};
-
-export type RootAppState = {
-  loading: boolean;
-  error: null | string;
-};
-
-export type RootState = {
-  commentsReducer: RootCommentsState;
-  appReducer: RootAppState;
-};
+export const COMMENT_CREATE = 'COMMENT_CREATE';
+export const COMMENT_UPDATE = 'COMMENT_UPDATE';
+export const COMMENT_DELETE = 'COMMENT_DELETE';
 
 export const COMMENTS_LOAD = 'COMMENTS_LOAD';
 export const LOADER_DISPLAY_ON = 'LOADER_DISPLAY_ON';
@@ -20,3 +8,33 @@ export const LOADER_DISPLAY_OFF = 'LOADER_DISPLAY_OFF';
 
 export const ERROR_DISPLAY_ON = 'ERROR_DISPLAY_ON';
 export const ERROR_DISPLAY_OFF = 'ERROR_DISPLAY_OFF';
+
+export const LOADER_COMMENTS_ON = 'LOADER_COMMENTS_ON';
+export const LOADER_COMMENTS_OFF = 'LOADER_COMMENTS_OFF';
+export const ERROR_COMMENTS_ON = 'ERROR_COMMENTS _ON';
+export const ERROR_COMMENTS_OFF = 'ERROR_COMMENTS_OFF';
+
+export type RootCommentsState = {
+  comments: [
+    {
+      text: string;
+      id: string;
+    }
+  ];
+};
+
+export type RootAppState = {
+  loading: boolean;
+  error: null | string;
+};
+
+export type RootCommentsLoaderState = {
+  loading: boolean;
+  error: null | string;
+};
+
+export type RootState = {
+  commentsReducer: RootCommentsState;
+  appReducer: RootAppState;
+  commentsLoaderReducer: RootCommentsLoaderState;
+};
