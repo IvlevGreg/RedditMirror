@@ -14,7 +14,6 @@ interface ICommentReplyList {
 
 export function CommentReplyList({ userName, postId }: ICommentReplyList) {
   const [isCommentFormOpen, setIsCommentFormOpen] = React.useState(false);
-  // React.useEffect(() => setIsCommentFormOpen(false), [false]);
 
   const handleOpen = (e: React.MouseEvent) => {
     setIsCommentFormOpen(!isCommentFormOpen);

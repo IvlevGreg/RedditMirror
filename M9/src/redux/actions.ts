@@ -34,3 +34,10 @@ export function loaderCommentsOff() {
     type: LOADER_COMMENTS_OFF,
   };
 }
+
+export function setToken(token: string) {
+  return {
+    type: LOADER_COMMENTS_OFF,
+    token,
+  };
+}

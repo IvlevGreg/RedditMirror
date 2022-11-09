@@ -8,15 +8,16 @@ import { Header } from './shared/Header';
 import { Layout } from './shared/Layout';
 import { tokenContext } from './shared/context/tokenContext';
 import { createStore } from 'redux';
-import { Provider, useSelector } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './redux/rootReducer';
-import { LoaderSpinner } from './shared/LoaderSpinner';
+import { setToken } from './redux/actions';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
 function AppComponent() {
   const [token] = useToken();
+  console.log(token);
 
   const TokenProvider = tokenContext.Provider;
 

@@ -19,11 +19,16 @@ export function useUserData(): [IUserData] {
           },
         })
         .then((resp) => {
+          console.log(token);
           const userData = resp.data;
           console.log(resp.data);
           setData({ name: userData.name, iconImg: userData.icon_img });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(token);
+
+          console.log(err);
+        });
     }
   }, [token]);
 

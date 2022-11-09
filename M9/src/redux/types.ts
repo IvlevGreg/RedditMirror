@@ -13,6 +13,8 @@ export const LOADER_COMMENTS_OFF = 'LOADER_COMMENTS_OFF';
 export const ERROR_COMMENTS_ON = 'ERROR_COMMENTS _ON';
 export const ERROR_COMMENTS_OFF = 'ERROR_COMMENTS_OFF';
 
+export const SET_TOKEN = 'SET_TOKEN';
+
 export type RootCommentsState = {
   comments: Array<{
     commentText: string;
@@ -30,8 +32,13 @@ export type RootCommentsLoaderState = {
   error: null | string;
 };
 
+export type RootTokenState = {
+  token: string;
+};
+
 export type RootState = {
   commentsReducer: RootCommentsState;
   appReducer: RootAppState;
   commentsLoaderReducer: RootCommentsLoaderState;
+  tokenReducer: RootTokenState;
 };
