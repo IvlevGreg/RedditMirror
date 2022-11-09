@@ -1,41 +1,17 @@
 import { ActionCreator, AnyAction } from 'redux';
 import {
-  COMMENT_CREATE,
-  COMMENT_DELETE,
-  COMMENT_UPDATE,
+  UPDATE_COMMENT,
   LOADER_COMMENTS_OFF,
   LOADER_COMMENTS_ON,
   LOADER_DISPLAY_OFF,
   LOADER_DISPLAY_ON,
 } from './types';
 
-// export function commentCreate(text: string, id: string) {
-//   return {
-//     type: COMMENT_CREATE,
-//     data: { text, id },
-//   };
-// }
-
-// export function commentUpdate(text: string, id: string) {
-//   return {
-//     type: COMMENT_UPDATE,
-//     data: { text, id },
-//   };
-// }
-
-// export function commentDelete(id: string) {
-//   return {
-//     type: COMMENT_DELETE,
-//     id,
-//   };
-// }
-
-// export function commentUpdate(text: string) {
-//   return {
-//     type: COMMENT_UPDATE,
-//     data: text,
-//   };
-// }
+export const updateComment = (commentText: string, id: string) => ({
+  type: UPDATE_COMMENT,
+  commentText,
+  id,
+});
 
 export function loaderAppOn() {
   return {

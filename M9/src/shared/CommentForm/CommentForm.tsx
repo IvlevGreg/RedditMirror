@@ -3,11 +3,12 @@ import React, {
   FormEvent,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { RootState } from '../../redux/types';
-import { createComment, updateComment } from '../../redux';
+import { updateComment } from '../../redux';
 
 import { CommentAdditionalButtons } from './CommentAdditionalButtons';
 import styles from './commentform.css';
@@ -15,64 +16,66 @@ import styles from './commentform.css';
 interface IcommentForm {
   userName: string;
   postId: string;
+  onClose?: () => void;
 }
+const NOOP = () => {};
 
-export function CommentForm({ userName, postId }: IcommentForm) {
-  // const [commentText, setCommentText] = useState(userName);
-
+export function CommentForm({
+  userName,
+  postId,
+  onClose = NOOP,
+}: IcommentForm) {
   const dispatch = useDispatch();
-  // dispatch(createComment(`${userName},`, postId));
 
   const value = useSelector<RootState, string>((state) => {
     const itemIndex = state.commentsReducer.comments.findIndex(
       (res) => res.id === postId
     );
-    console.log(itemIndex);
     if (itemIndex === -1) {
-      console.log(`${userName},`);
-
-      // dispatch(createComment(`${userName},`, postId));
+      dispatch(updateComment(`${userName},`, postId));
       return `${userName},`;
     }
     return state.commentsReducer.comments[itemIndex].commentText;
   });
-  console.log('value');
-  console.log(value);
 
   function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
-    // console.log(postId);
     dispatch(updateComment(e.target.value, postId));
   }
 
-  // if (userName) {
-  //   console.log('111');
-  //   dispatch(updateComment(`${userName},`));
-  // }
-
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    // dispatch(commentCreate(commentText, postId));
+    dispatch(updateComment(`${userName},`, postId));
+    onClose();
   }
 
-  function handleCommentClick() {
-    // console.log(`comment:  ${commentText}`);
-    // setCommentText('');
+  function handleCommentClick(e: FormEvent) {
+    alert(`Вы оставили комментарий: '${value}'`);
   }
 
-  // useEffect(() => {
-  //   dispatch(dispatch(commentUpdate(`${userName},`)));
-  // }, []);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.focus();
+    }
+  }, []);
+
+  function moveCaretAtEnd(e: { target: { value: string } }) {
+    const temp_value = e.target.value;
+    e.target.value = '';
+    e.target.value = temp_value;
+  }
 
   return (
     <form action="" className={styles.form} onSubmit={handleSubmit}>
       <textarea
-        // ref={ref}
+        ref={textAreaRef}
         value={value}
         onChange={handleChange}
         // name=""
         // id=""
         // cols="30"
         // rows="10"
+        onFocus={moveCaretAtEnd}
         className={styles.input}
       ></textarea>
       <div className={styles.buttonsContainer}>

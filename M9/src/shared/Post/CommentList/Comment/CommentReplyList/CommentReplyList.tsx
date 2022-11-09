@@ -1,6 +1,4 @@
-import React, { LegacyRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { createComment, updateComment } from '../../../../../redux';
+import React, { useEffect, useRef } from 'react';
 import { CommentForm } from '../../../../CommentForm';
 import {
   DropdownCommentsIcon,
@@ -15,29 +13,22 @@ interface ICommentReplyList {
 }
 
 export function CommentReplyList({ userName, postId }: ICommentReplyList) {
-  let isOpen = false;
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
-  React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
-  const dispatch = useDispatch();
+  const [isCommentFormOpen, setIsCommentFormOpen] = React.useState(false);
+  // React.useEffect(() => setIsCommentFormOpen(false), [false]);
 
   const handleOpen = (e: React.MouseEvent) => {
-    setIsDropdownOpen(!isDropdownOpen);
-    console.log(userName);
-    // dispatch(updateComment(`${userName},`, postId));
-    console.log(userName);
+    setIsCommentFormOpen(!isCommentFormOpen);
   };
+
+  function onClose() {
+    console.log(1);
+    setIsCommentFormOpen(!isCommentFormOpen);
+  }
 
   return (
     <>
       <ul className={styles.CommentReplysList}>
         <li className={styles.CommentReplyItem}>
-          {/* <button
-          className={styles.CommentReply + ' ' + styles.CommentReplyDekstop}
-        >
-          <DropdownCommentsIcon />
-          <span className={styles.CommentReplyText}>Ответить</span>
-        </button> */}
-
           <button
             onClick={handleOpen}
             className={styles.CommentReply + ' ' + styles.CommentReplyDekstop}
@@ -62,7 +53,9 @@ export function CommentReplyList({ userName, postId }: ICommentReplyList) {
           </button>
         </li>
       </ul>
-      {isDropdownOpen && <CommentForm postId={postId} userName={userName} />}
+      {isCommentFormOpen && (
+        <CommentForm postId={postId} userName={userName} onClose={onClose} />
+      )}
     </>
   );
 }
