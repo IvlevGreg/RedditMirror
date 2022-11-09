@@ -45,11 +45,12 @@ const FirstLoadArray: IPostsData = [
 ];
 
 export function usePostsData(): [IPostsData] {
-  const [data, setData] = useState<IPostsData>(FirstLoadArray);
+  const [data, setData] = useState<IPostsData>([]);
   const token = useContext(tokenContext);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(token);
     axios
       .get('https://oauth.reddit.com/best.json?sr_detail=true', {
         headers: {
@@ -62,7 +63,11 @@ export function usePostsData(): [IPostsData] {
         setData(postsList);
         dispatch(loaderAppOff());
       })
-      .catch(console.log);
+      .catch((err) => {
+        dispatch(loaderAppOff());
+        console.log('error');
+        console.log(err);
+      });
   }, [token]);
 
   return [data];

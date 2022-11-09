@@ -28,7 +28,7 @@ export function Post(props: IPost) {
     <div className={styles.modal} ref={ref}>
       <h2 className={styles.title}>{props.title}</h2>
       <PostContent previewLink={props.previewLink} />
-      <CommentForm postId={props.postId} />
+      <CommentForm userName={props.userName} postId={props.postId} />
       <LoaderComments />
       <CommentList postData={postData} postId={props.postId} />
     </div>,

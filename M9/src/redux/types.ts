@@ -15,12 +15,10 @@ export const ERROR_COMMENTS_ON = 'ERROR_COMMENTS _ON';
 export const ERROR_COMMENTS_OFF = 'ERROR_COMMENTS_OFF';
 
 export type RootCommentsState = {
-  comments: [
-    {
-      text: string;
-      id: string;
-    }
-  ];
+  comments: Array<{
+    commentText: string;
+    id: string;
+  }>;
 };
 
 export type RootAppState = {
