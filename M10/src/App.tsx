@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 import './main.global.css';
 import { useToken } from './hooks/useToken';
@@ -18,6 +18,14 @@ const store = createStore(rootReducer, composeWithDevTools());
 function AppComponent() {
   const [token] = useToken();
   console.log(token);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(setToken(token));
+    }
+  }, [token]);
 
   const TokenProvider = tokenContext.Provider;
 
