@@ -1,0 +1,36 @@
+.item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+  padding-top: 10px;
+  list-style: none;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.CommentText {
+  margin: 10px 0;
+}
+
+.karmaCounterContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.karmaCounterContainer > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftBorder {
+  position: absolute;
+  top: 40px;
+  left: 6.5px;
+  bottom: 0;
+  width: 3px;
+  background-color: #d9d9d9;
+}
