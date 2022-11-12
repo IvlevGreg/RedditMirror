@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
+import { RootState } from '../redux';
+import { useSelector } from 'react-redux';
 
 interface IUserData {
   name?: string;
@@ -8,7 +10,11 @@ interface IUserData {
 }
 export function useUserData(): [IUserData] {
   const [data, setData] = useState<IUserData>({});
-  const token = useContext(tokenContext);
+  // const token = useContext(tokenContext);
+
+  const token = useSelector<RootState, string>(
+    (state) => state.tokenReducer.token
+  );
 
   useEffect(() => {
     if (token && token.length > 0 && token !== 'undefined') {

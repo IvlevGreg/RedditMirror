@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loaderCommentsOff, loaderCommentsOn } from '../redux/actions';
+import { RootState } from '../redux';
 
 export type ICommentData = {
   data: {
@@ -37,8 +38,12 @@ export function usePostData(postId: string, userName: string) {
     },
     kind: 'Listining',
   });
-  const token = useContext(tokenContext);
+  // const token = useContext(tokenContext);
   const dispatch = useDispatch();
+
+  const token = useSelector<RootState, string>(
+    (state) => state.tokenReducer.token
+  );
 
   useEffect(() => {
     dispatch(loaderCommentsOn());

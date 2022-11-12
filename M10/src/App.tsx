@@ -27,18 +27,18 @@ function AppComponent() {
     }
   }, [token]);
 
-  const TokenProvider = tokenContext.Provider;
+  // const TokenProvider = tokenContext.Provider;
 
   return (
     <Provider store={store}>
-      <TokenProvider value={token}>
-        <Layout>
-          <Header />
-          <Content>
-            <CardsList />
-          </Content>
-        </Layout>
-      </TokenProvider>
+      {/* <TokenProvider value={token}> */}
+      <Layout>
+        <Header />
+        <Content>
+          <CardsList />
+        </Content>
+      </Layout>
+      {/* </TokenProvider> */}
     </Provider>
   );
 }

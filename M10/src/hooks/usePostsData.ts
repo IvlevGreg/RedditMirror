@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loaderAppOff } from '../redux/actions';
+import { RootState } from '../redux';
 
 export type IPostData = {
   data: {
@@ -46,8 +47,11 @@ const FirstLoadArray: IPostsData = [
 
 export function usePostsData(): [IPostsData] {
   const [data, setData] = useState<IPostsData>([]);
-  const token = useContext(tokenContext);
+  // const token = useContext(tokenContext);
   const dispatch = useDispatch();
+  const token = useSelector<RootState, string>(
+    (state) => state.tokenReducer.token
+  );
 
   useEffect(() => {
     console.log(token);
