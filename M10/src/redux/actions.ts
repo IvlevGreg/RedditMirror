@@ -5,6 +5,7 @@ import {
   LOADER_COMMENTS_ON,
   LOADER_DISPLAY_OFF,
   LOADER_DISPLAY_ON,
+  SET_TOKEN,
 } from './types';
 
 export const updateComment = (commentText: string, id: string) => ({
@@ -37,7 +38,7 @@ export function loaderCommentsOff() {
 
 export function setToken(token: string) {
   return {
-    type: LOADER_COMMENTS_OFF,
+    type: SET_TOKEN,
     token,
   };
 }

@@ -47,14 +47,13 @@ const FirstLoadArray: IPostsData = [
 
 export function usePostsData(): [IPostsData] {
   const [data, setData] = useState<IPostsData>([]);
-  // const token = useContext(tokenContext);
+
   const dispatch = useDispatch();
   const token = useSelector<RootState, string>(
     (state) => state.tokenReducer.token
   );
 
   useEffect(() => {
-    console.log(token);
     axios
       .get('https://oauth.reddit.com/best.json?sr_detail=true', {
         headers: {

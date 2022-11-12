@@ -10,7 +10,6 @@ interface IUserData {
 }
 export function useUserData(): [IUserData] {
   const [data, setData] = useState<IUserData>({});
-  // const token = useContext(tokenContext);
 
   const token = useSelector<RootState, string>(
     (state) => state.tokenReducer.token
