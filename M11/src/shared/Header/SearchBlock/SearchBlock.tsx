@@ -5,7 +5,6 @@ import { useUserData } from '../../../hooks/useUserData';
 
 export function SearchBlock() {
   const { data, loading } = useUserData();
-  console.log(data);
   return (
     <div className={styles.searchBlock}>
       <UserBlock

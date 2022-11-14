@@ -18,7 +18,6 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
   const queryParams = new URLSearchParams(window.location.search);
   const code = queryParams.get('code');
 
-  dispatch(userRequest());
   axios
     .post(
       'https://www.reddit.com/api/v1/access_token',

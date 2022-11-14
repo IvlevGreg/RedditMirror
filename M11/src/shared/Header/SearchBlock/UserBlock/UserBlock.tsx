@@ -8,7 +8,11 @@ interface IUserBlockProps {
   loading?: boolean;
 }
 
-export function UserBlock({ avatarSrc, username, loading }: IUserBlockProps) {
+export function UserBlock({
+  avatarSrc,
+  username,
+  loading = false,
+}: IUserBlockProps) {
   return (
     <a
       href="https://www.reddit.com/api/v1/authorize?client_id=6GjP-1ayBsFeHWVql35igA&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity"
