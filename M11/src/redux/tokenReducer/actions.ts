@@ -2,11 +2,7 @@ import axios from 'axios';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from '..';
-import {
-  userRequest,
-  userRequestSuccess,
-  userRequestError,
-} from '../userReducer';
+import { userRequest } from '../userReducer';
 import { SET_TOKEN } from './tokenReducer';
 
 export function setToken(token: string) {
@@ -29,8 +25,7 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
       `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/auth`,
       {
         auth: {
-          // @ts-ignore
-          username: process.env.CLIENT_ID,
+          username: process.env.CLIENT_ID || '',
           password: 'C3rpbWzgVH0KvbFRa2Mjo2VnQiGk4g',
         },
         headers: {
@@ -39,10 +34,7 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
       }
     )
     .then(({ data }) => {
-      console.log('111');
-
       dispatch(setToken(data['access_token']));
     })
-
     .catch(console.log);
 };

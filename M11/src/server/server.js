@@ -2,9 +2,6 @@ import express from 'express';
 import ReactDOM from 'react-dom/server';
 import { App } from '../App.tsx';
 import { indexTemplate } from './indexTemplate.js';
-import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setToken } from '../redux/tokenReducer';
 
 const app = express();
 
