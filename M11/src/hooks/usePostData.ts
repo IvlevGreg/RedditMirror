@@ -49,7 +49,7 @@ export function usePostData(postId: string, userName: string) {
   );
 
   useEffect(() => {
-    if (!token) return;
+    console.log(token);
 
     dispatch(loaderCommentsOn());
     axios
@@ -60,7 +60,10 @@ export function usePostData(postId: string, userName: string) {
         setData(postsList);
         dispatch(loaderCommentsOff());
       })
-      .catch(console.log);
+      .catch((err) => {
+        dispatch(loaderCommentsOff());
+        console.log(err);
+      });
   }, [token]);
 
   return [data];

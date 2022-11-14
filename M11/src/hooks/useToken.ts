@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux';
+import { tokenRequestAsync } from '../redux/tokenReducer';
+import { userRequestAsync } from '../redux/userReducer';
 
 export function useToken() {
-  const [token, setToken] = useState('');
+  const token = useSelector<RootState, string>(
+    (state) => state.tokenReducer.token
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (window.__token__) {
-      setToken(window.__token__);
-    }
-  }, []);
+    dispatch(tokenRequestAsync());
+  }, [token]);
+
   return [token];
 }
