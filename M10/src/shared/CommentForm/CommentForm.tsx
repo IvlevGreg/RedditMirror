@@ -1,14 +1,7 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FormEvent, useEffect, useRef } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { RootState } from '../../redux/types';
-import { updateComment } from '../../redux';
+import { RootState } from '../../redux';
+import { updateComment } from '../../redux/commentsReducer';
 
 import { CommentAdditionalButtons } from './CommentAdditionalButtons';
 import styles from './commentform.css';

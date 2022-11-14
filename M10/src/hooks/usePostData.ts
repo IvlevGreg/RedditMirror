@@ -2,8 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { loaderCommentsOff, loaderCommentsOn } from '../redux/actions';
 import { RootState } from '../redux';
+import {
+  loaderCommentsOn,
+  loaderCommentsOff,
+} from '../redux/commentsLoaderReducer';
 
 export type ICommentData = {
   data: {
@@ -46,6 +49,8 @@ export function usePostData(postId: string, userName: string) {
   );
 
   useEffect(() => {
+    if (!token) return;
+
     dispatch(loaderCommentsOn());
     axios
       .get(`https://api.reddit.com/r/${userName}/comments/${postId}`)

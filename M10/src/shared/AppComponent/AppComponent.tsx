@@ -5,17 +5,17 @@ import { Header } from '../Header';
 import { Layout } from '../Layout';
 import { useDispatch } from 'react-redux';
 import { useToken } from '../../hooks/useToken';
-import { setToken } from '../../redux';
 
 import styles from './appcomponent.css';
+import { setToken } from '../../redux/tokenReducer/actions';
 
 export function AppComponent() {
-  const [token] = useToken();
-
   const dispatch = useDispatch();
 
+  const [token] = useToken();
+
   useEffect(() => {
-    if (token) {
+    if (token && token !== 'undefined') {
       dispatch(setToken(token));
     }
   }, [token]);

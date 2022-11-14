@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { tokenContext } from '../shared/context/tokenContext';
 import { useDispatch, useSelector } from 'react-redux';
-import { loaderAppOff } from '../redux/actions';
 import { RootState } from '../redux';
+import { loaderAppOff } from '../redux/appReducer';
 
 export type IPostData = {
   data: {

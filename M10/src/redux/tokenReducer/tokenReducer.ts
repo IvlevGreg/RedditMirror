@@ -1,8 +1,13 @@
 import { Reducer } from 'redux';
-import { RootTokenState, SET_TOKEN } from './types';
+
+export const SET_TOKEN = 'SET_TOKEN';
 
 const intialState: RootTokenState = {
   token: '',
+};
+
+export type RootTokenState = {
+  token: string;
 };
 
 export const tokenReducer: Reducer<RootTokenState> = (

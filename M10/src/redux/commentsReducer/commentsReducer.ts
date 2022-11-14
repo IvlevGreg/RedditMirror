@@ -1,5 +1,14 @@
-import { ActionCreator, AnyAction, Reducer } from 'redux';
-import { RootCommentsState, UPDATE_COMMENT } from './types';
+import { Reducer } from 'redux';
+
+export const UPDATE_COMMENT = 'UPDATE_COMMENT';
+export const CREATE_COMMENT = 'CREATE_COMMENT';
+
+export type RootCommentsState = {
+  comments: Array<{
+    commentText: string;
+    id: string;
+  }>;
+};
 
 const initialState: RootCommentsState = {
   comments: [

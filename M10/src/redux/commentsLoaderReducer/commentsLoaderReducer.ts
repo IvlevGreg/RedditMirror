@@ -1,11 +1,14 @@
 import { Reducer } from 'redux';
-import {
-  LOADER_COMMENTS_ON,
-  LOADER_COMMENTS_OFF,
-  ERROR_COMMENTS_ON,
-  ERROR_COMMENTS_OFF,
-  RootCommentsLoaderState,
-} from './types';
+
+export const LOADER_COMMENTS_ON = 'LOADER_COMMENTS_ON';
+export const LOADER_COMMENTS_OFF = 'LOADER_COMMENTS_OFF';
+export const ERROR_COMMENTS_ON = 'ERROR_COMMENTS _ON';
+export const ERROR_COMMENTS_OFF = 'ERROR_COMMENTS_OFF';
+
+export type RootCommentsLoaderState = {
+  loading: boolean;
+  error: null | string;
+};
 
 const intialState: RootCommentsLoaderState = {
   loading: true,
