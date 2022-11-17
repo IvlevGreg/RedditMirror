@@ -14,12 +14,6 @@ export function AppComponent() {
 
   const [token] = useToken();
 
-  useEffect(() => {
-    if (token && token !== 'undefined') {
-      dispatch(setToken(token));
-    }
-  }, [token]);
-
   return (
     <Layout>
       <Header />

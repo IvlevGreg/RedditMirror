@@ -17,7 +17,7 @@ type ActionThunk = ThunkAction<void, RootState, unknown, Action<string>>;
 export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
   const queryParams = new URLSearchParams(window.location.search);
   const code = queryParams.get('code');
-
+  if (!code) return;
   axios
     .post(
       'https://www.reddit.com/api/v1/access_token',
@@ -33,6 +33,7 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
       }
     )
     .then(({ data }) => {
+      if (!data['access_token']) return;
       dispatch(setToken(data['access_token']));
     })
     .catch(console.log);

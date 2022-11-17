@@ -3,38 +3,72 @@ import { IPostData, IPostsData, usePostsData } from '../../hooks/usePostsData';
 import { getPublishedTimeFromNow } from '../../modules';
 import { Card } from './Card/Card';
 import styles from './cardslist.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux';
 import { LoaderSpinner } from '../LoaderSpinner';
+import axios from 'axios';
+import {
+  loaderAppOff,
+  loaderAppOn,
+  loaderErrorOn,
+} from '../../redux/appReducer';
+import { concat } from '../../../webpack.config';
 
 export function CardsList() {
   const [nextAfter, setNextAfter] = useState<string>('');
-  const { data, after } = usePostsData(nextAfter);
-  const [postsData, setPostsData] = useState<IPostsData>([]);
+  const [loadAmount, setLoadAmount] = useState<number>(1);
 
-  useEffect(() => {
-    setPostsData((prevChildren) => prevChildren.concat(data));
-  }, [data]);
+  const [postsData, setPostsData] = useState<IPostsData>([]);
+  const token = useSelector<RootState, string>(
+    (state) => state.tokenReducer.token
+  );
 
   const spinner = useSelector<RootState, boolean>(
     (state) => state.appReducer.loading
   );
-  const isError = useSelector<RootState, boolean>(
-    (state) => state.appReducer.isError
-  );
+
   const error = useSelector<RootState, null | Error>(
     (state) => state.appReducer.error
   );
 
   const bottomOfList = useRef<HTMLDivElement>(null);
 
+  const dispatch = useDispatch();
+
+  async function load(currentAfter: string) {
+    dispatch(loaderAppOn());
+    try {
+      const resp = await axios.get(
+        'https://oauth.reddit.com/best.json?sr_detail=true',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            limit: 13,
+            after: currentAfter,
+          },
+        }
+      );
+
+      const postsList = resp.data.data.children;
+      setNextAfter(resp.data.data.after);
+      setPostsData((prevChildren) => prevChildren.concat(...postsList));
+    } catch (err) {
+      dispatch(loaderErrorOn(err as Error));
+
+      console.log(err);
+    }
+    dispatch(loaderAppOff());
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        // if (entries[0].isIntersecting) return;
-        console.log('111');
-        const { data, after } = usePostsData(nextAfter);
-        setNextAfter(after);
+        if (entries[0].isIntersecting && !spinner && loadAmount % 4 !== 0) {
+          load(nextAfter);
+          setLoadAmount(loadAmount + 1);
+        }
       },
       {
         rootMargin: '100px',
@@ -48,16 +82,10 @@ export function CardsList() {
         observer.unobserve(bottomOfList.current);
       }
     };
-  }, [bottomOfList.current, nextAfter]);
+  }, [nextAfter, spinner, loadAmount]);
 
   return (
     <>
-      <LoaderSpinner />
-      {error && (
-        <p
-          className={styles.errorLoading}
-        >{`Упс... ${error.name}: ${error.message}`}</p>
-      )}
       <ul className={styles.cardsList}>
         {postsData.map((card: IPostData): JSX.Element => {
           return (
@@ -79,6 +107,21 @@ export function CardsList() {
             />
           );
         })}
+        <LoaderSpinner />
+
+        {error && (
+          <p
+            className={styles.errorLoading}
+          >{`Упс... ${error.name}: ${error.message}`}</p>
+        )}
+        {loadAmount % 4 === 0 && !spinner && (
+          <button
+            className={styles.buttonMore}
+            onClick={() => setLoadAmount(1)}
+          >
+            Показать еще
+          </button>
+        )}
       </ul>
       <div ref={bottomOfList} />
     </>

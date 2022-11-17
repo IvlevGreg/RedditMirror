@@ -12,7 +12,7 @@ export function useToken() {
 
   useEffect(() => {
     dispatch(tokenRequestAsync());
-  }, [token]);
+  }, []);
 
   return [token];
 }

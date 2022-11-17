@@ -8,7 +8,7 @@ export const LOADER_ERROR_ON = 'LOADER_ERROR_ON';
 export const LOADER_ERROR_OFF = 'LOADER_ERROR_OFF';
 
 const intialState: RootAppState = {
-  loading: true,
+  loading: false,
   error: null,
   isError: false,
 };

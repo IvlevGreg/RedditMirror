@@ -1,5 +1,4 @@
 .loaderStyles {
-  position: relative;
-  left: 50%;
-  top: 150px;
+  display: flex;
+  justify-content: center;
 }
