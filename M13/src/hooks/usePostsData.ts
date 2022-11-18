@@ -82,7 +82,7 @@ export function usePostsData(previousAfter: string): IUsePostsData {
         console.log('error');
         console.log(err);
       });
-  }, []);
+  }, [token]);
 
   return { data, after };
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Post } from '../../../../Post';
 import styles from './title.css';
+import { Link, Route, Routes } from 'react-router-dom';
 
 interface ITitle {
   postId: string;
@@ -19,10 +20,12 @@ export function Title({
 }: ITitle) {
   const URL_PERMA_LINK_PREFIX = 'https://www.reddit.com/';
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <h2 className={styles.title}>
-      <button
+      <Link to={`/post/${postId}`} className={styles.postLink}>
+        {title}
+      </Link>
+      {/* <button
         // target="_blank"
         // href={URL_PERMA_LINK_PREFIX + postPermaLink}
         className={styles.postLink}
@@ -33,22 +36,8 @@ export function Title({
             ? (document.body.style.overflow = 'initial')
             : (document.body.style.overflow = 'hidden');
         }}
-      >
-        {title}
-      </button>
-
-      {isModalOpen && (
-        <Post
-          postId={postId}
-          userName={userName}
-          title={title}
-          previewLink={previewLink}
-          onClose={() => {
-            document.body.style.overflow = 'initial';
-            setIsModalOpen(false);
-          }}
-        />
-      )}
+      > */}
+      {/* </button> */}
     </h2>
   );
 }

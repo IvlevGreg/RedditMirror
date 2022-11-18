@@ -4,6 +4,8 @@ import { Controls } from './Controls';
 import { Menu } from './Menu';
 import { Preview } from './Preview';
 import { TextContent } from './TextContent';
+import { Link, Route, Routes } from 'react-router-dom';
+import { Post } from '../../Post';
 
 interface ICard {
   postId: string;
@@ -41,6 +43,24 @@ export function Card({
 
       <Menu />
       <Controls karmaValue={karmaValue} />
+
+      {/* <Routes>
+        <Route
+          path={`/post/:id`}
+          element={
+            <Post
+              postId={postId}
+              userName={userName}
+              title={title}
+              previewLink={previewLink}
+              onClose={() => {
+                document.body.style.overflow = 'initial';
+                // setIsModalOpen(false);
+              }}
+            />
+          }
+        />
+      </Routes> */}
     </li>
   );
 }
