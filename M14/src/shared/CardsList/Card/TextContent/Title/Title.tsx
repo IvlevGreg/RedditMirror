@@ -19,21 +19,21 @@ export function Title({
   previewLink,
 }: ITitle) {
   const URL_PERMA_LINK_PREFIX = 'https://www.reddit.com/';
-  console.log(
-    'postId',
-    postId,
-    'title',
-    title,
-    'postPermaLink',
-    postPermaLink,
-    'userName',
-    userName,
-    'previewLink',
-    previewLink
-  );
+  // console.log(
+  //   'postId',
+  //   postId,
+  //   'title',
+  //   title,
+  //   'postPermaLink',
+  //   postPermaLink,
+  //   'userName',
+  //   userName,
+  //   'previewLink',
+  //   previewLink
+  // );
   return (
     <h2 className={styles.title}>
-      <Link to={`/post/${postId}`} className={styles.postLink}>
+      <Link to={`/posts/${postId}`} className={styles.postLink}>
         {title}
       </Link>
       {/* <button

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICommentData, ICommentsData } from '../../../hooks/usePostData';
+import { ICommentData } from '../../../hooks/usePostCommentData';
 import { getPublishedTimeFromNow } from '../../../modules';
 import { Comment } from './Comment';
 

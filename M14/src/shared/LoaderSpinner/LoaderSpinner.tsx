@@ -5,7 +5,7 @@ import styles from './loaderspinner.css';
 import React from 'react';
 import { RootState } from '../../redux';
 
-export function LoaderSpinner() {
+export function LoaderSpinner({ visibleSpinner }: { visibleSpinner: boolean }) {
   const spinner = useSelector<RootState, boolean>(
     (state) => state.appReducer.loading
   );
@@ -20,7 +20,7 @@ export function LoaderSpinner() {
         radius="2"
         wrapperStyle={{}}
         wrapperClass=""
-        visible={spinner}
+        visible={visibleSpinner}
       />
     </div>
   );

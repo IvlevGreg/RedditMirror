@@ -13,6 +13,7 @@ import {
   loaderErrorOn,
 } from '../../redux/appReducer';
 import { concat } from '../../../webpack.config';
+import { Outlet } from 'react-router-dom';
 
 export function CardsList() {
   const [nextAfter, setNextAfter] = useState<string>('');
@@ -107,7 +108,7 @@ export function CardsList() {
             />
           );
         })}
-        <LoaderSpinner />
+        <LoaderSpinner visibleSpinner={spinner} />
 
         {error && (
           <p
@@ -124,6 +125,7 @@ export function CardsList() {
         )}
       </ul>
       <div ref={bottomOfList} />
+      <Outlet />
     </>
   );
 }

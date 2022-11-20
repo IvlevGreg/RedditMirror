@@ -19,14 +19,14 @@ export function CommentForm({
   onClose = NOOP,
 }: IcommentForm) {
   const dispatch = useDispatch();
-
+  const userNameTemplate = userName ? `${userName},` : '';
   const value = useSelector<RootState, string>((state) => {
     const itemIndex = state.commentsReducer.comments.findIndex(
       (res) => res.id === postId
     );
     if (itemIndex === -1) {
-      dispatch(updateComment(`${userName},`, postId));
-      return `${userName},`;
+      dispatch(updateComment(userNameTemplate, postId));
+      return userNameTemplate;
     }
     return state.commentsReducer.comments[itemIndex].commentText;
   });
@@ -37,7 +37,8 @@ export function CommentForm({
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    dispatch(updateComment(`${userName},`, postId));
+
+    dispatch(updateComment(userNameTemplate, postId));
     onClose();
   }
 

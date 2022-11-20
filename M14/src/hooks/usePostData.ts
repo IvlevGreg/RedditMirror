@@ -7,27 +7,27 @@ import {
   loaderCommentsOn,
   loaderCommentsOff,
 } from '../redux/commentsLoaderReducer';
+import { ICommentsData } from './usePostCommentData';
 
-export type ICommentData = {
-  data: {
-    children: [
-      {
-        data: {
-          author: string;
-          body?: string;
-          id: string;
-          created: number;
-          replies?: ICommentData;
-        };
-      }
-    ];
-  };
-  kind: string;
+export type IPostData = {
+  id: string;
+  // userName
+  subreddit: string;
+  //
+  title: string;
+  //
+  url: string;
 };
-export type ICommentsData = ICommentData;
 
-export function usePostData(postId: string, userName: string) {
-  const [data, setData] = useState<ICommentsData>({
+export function usePostData(postId: string) {
+  const [postData, setPostData] = useState<IPostData>({
+    id: '',
+    subreddit: '',
+    title: '',
+    url: '',
+  });
+
+  const [commentsData, setCommentsData] = useState<ICommentsData>({
     data: {
       children: [
         {
@@ -41,6 +41,7 @@ export function usePostData(postId: string, userName: string) {
     },
     kind: 'Listining',
   });
+
   // const token = useContext(tokenContext);
   const dispatch = useDispatch();
 
@@ -49,24 +50,34 @@ export function usePostData(postId: string, userName: string) {
   );
 
   useEffect(() => {
-    console.log(token);
+    if (!postData.subreddit) {
+      axios
+        .get(`https://api.reddit.com/by_id/t3_${postId}`)
+        .then((resp) => {
+          const postData = resp.data.data.children[0].data;
+          setPostData(postData);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    //
 
+    if (!postData.subreddit) return;
     dispatch(loaderCommentsOn());
     axios
-      .get(`https://api.reddit.com/by_id/t3_${postId}`)
+      .get(`https://api.reddit.com/r/${postData.subreddit}/comments/${postId}`)
       .then((resp) => {
-        console.log(resp);
-
         const postsList = resp.data[1];
-        console.log(postsList);
-        setData(postsList);
-        dispatch(loaderCommentsOff());
+        setCommentsData(postsList);
       })
       .catch((err) => {
-        dispatch(loaderCommentsOff());
         console.log(err);
+      })
+      .finally(() => {
+        dispatch(loaderCommentsOff());
       });
-  }, [token]);
+  }, [token, postData]);
 
-  return [data];
+  return { postData, commentsData };
 }

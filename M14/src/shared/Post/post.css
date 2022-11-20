@@ -36,3 +36,10 @@
   line-height: 23px;
   color: var(--black);
 }
+
+.spinnerContainer {
+  position: absolute;
+  top: 20%;
+  right: 50%;
+  transform: translateX(50%);
+}
