@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=6GjP-1ayBsFeHWVql35igA node ./bin/dev.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=6GjP-1ayBsFeHWVql35igA node ./bin/dev.js",
+    "start": "node ./dist/server/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@hot-loader/react-dom": "^17.0.2",
     "@types/jest": "^29.1.2",
     "@types/react": "^17.0.42",
@@ -34,9 +38,7 @@
     "webpack-dev-middleware": "^3.7.3",
     "webpack-dev-server": "^3.10.3",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {
+    "webpack-node-externals": "^3.0.0",
     "axios": "^0.27.2",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
