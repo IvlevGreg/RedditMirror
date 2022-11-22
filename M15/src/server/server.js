@@ -10,15 +10,15 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
 
 const app = express();
 
-if (!IS_DEV) {
-  app.use(compression());
-  app.use(
-    helmet({
-      crossOriginEmbedderPolicy: false,
-      contentSecurityPolicy: false,
-    })
-  );
-}
+// if (!IS_DEV) {
+//   app.use(compression());
+//   app.use(
+//     helmet({
+//       crossOriginEmbedderPolicy: false,
+//       contentSecurityPolicy: false,
+//     })
+//   );
+// }
 
 app.use('/static', express.static('./dist/client'));
 
