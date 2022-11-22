@@ -21,11 +21,11 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
   axios
     .post(
       'https://www.reddit.com/api/v1/access_token',
-      `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/auth`,
+      `grant_type=authorization_code&code=${code}&redirect_uri=https://react-app-reddit-mirror.herokuapp.com/auth`,
       {
         auth: {
           username: process.env.CLIENT_ID || '',
-          password: 'C3rpbWzgVH0KvbFRa2Mjo2VnQiGk4g',
+          password: 'BHFXHxRjJg7MEGvN0DlDH83_AeSYUg',
         },
         headers: {
           'Content-type': 'application/x-www-form-urlencoded',
@@ -33,8 +33,13 @@ export const tokenRequestAsync = (): ActionThunk => (dispatch, getState) => {
       }
     )
     .then(({ data }) => {
+      console.log(code);
       if (!data['access_token']) return;
       dispatch(setToken(data['access_token']));
     })
-    .catch(console.log);
+    .catch((err) => {
+      console.log(code);
+
+      console.log(err);
+    });
 };

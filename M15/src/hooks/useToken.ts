@@ -11,6 +11,7 @@ export function useToken() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(token);
     dispatch(tokenRequestAsync());
   }, []);
 

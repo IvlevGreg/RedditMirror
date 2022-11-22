@@ -36,10 +36,7 @@ export function AppComponent() {
 
               {/* redirect */}
               <Route path={`/`} element={<Navigate to="/posts" replace />} />
-              <Route
-                path={`/auth`}
-                element={<Navigate to="/posts" replace />}
-              />
+              <Route path={`/auth`} element={<CardsList />} />
               <Route path={`/posts`} element={<CardsList />}>
                 <Route path={`:id`} element={<Post />} />
               </Route>
