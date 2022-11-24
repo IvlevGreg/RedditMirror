@@ -6,7 +6,8 @@
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development CLIENT_ID=6GjP-1ayBsFeHWVql35igA node ./bin/dev.js"
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=6GjP-1ayBsFeHWVql35igA node ./bin/dev.js",
+    "start": "cross-env CLIENT_ID=UhnQm3RN9V7OfxDfCYCvhQ SECRET=BHFXHxRjJg7MEGvN0DlDH83_AeSYUg node ./dist/server/server.js"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +47,7 @@
     "react-loader-spinner": "^5.3.4",
     "react-redux": "^7.2.1",
     "react-router-dom": "^6.4.3",
+    "recoil": "^0.7.6",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0"

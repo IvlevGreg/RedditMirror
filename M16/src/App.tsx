@@ -8,6 +8,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { rootReducer } from './redux/rootReducer';
 import { AppComponent } from './shared/AppComponent';
 import thunk from 'redux-thunk';
+import { RecoilRoot } from 'recoil';
 
 const store = createStore(
   rootReducer,
@@ -16,6 +17,8 @@ const store = createStore(
 
 export const App = hot(() => (
   <Provider store={store}>
-    <AppComponent />
+    <RecoilRoot>
+      <AppComponent />
+    </RecoilRoot>
   </Provider>
 ));

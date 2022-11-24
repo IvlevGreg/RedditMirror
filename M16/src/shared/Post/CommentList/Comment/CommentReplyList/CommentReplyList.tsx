@@ -52,9 +52,7 @@ export function CommentReplyList({ userName, postId }: ICommentReplyList) {
           </button>
         </li>
       </ul>
-      {isCommentFormOpen && (
-        <CommentForm postId={postId} userName={userName} onClose={onClose} />
-      )}
+      {isCommentFormOpen && <CommentForm postId={postId} userName={userName} />}
     </>
   );
 }
