@@ -10,9 +10,9 @@ export function NotFoundPage() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.subtitle}> Oops...</h2>
-      <h1 className={styles.title}> Not Found</h1>
-      <h2 className={styles.subtitle}> 404</h2>
+      <h2 className={styles.subtitle}>Oops...</h2>
+      <h1 className={styles.title}>Not Found</h1>
+      <h2 className={styles.subtitle}>404</h2>
       <button onClick={handle} className={styles.button}>
         На главную
       </button>
