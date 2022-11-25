@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 3000;
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
 const app = express();
-app.use(cors());
 
 if (!IS_DEV) {
   app.use(compression());
@@ -22,7 +21,7 @@ if (!IS_DEV) {
   );
 }
 
-var allowedOrigins = [
+const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001',
   `http://localhost:${PORT}`,

@@ -31,9 +31,16 @@ export function AppComponent() {
           <Content>
             <CardsList />
 
-            {/* <Routes>
-              <Route path={`/post/:id`} element={} />
-            </Routes> */}
+            <Routes>
+              <Route path={`/post/:id`} element={
+              <Post              postId={postId}
+              userName={userName}
+              title={title}
+              previewLink={previewLink}
+              
+              }}
+            />} />
+            </Routes>
           </Content>
         </Layout>
       </BrowserRouter>
