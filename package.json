@@ -6,7 +6,7 @@
   "homepage": "https://ivlevgreg.github.io/RedditMirror",
   "scripts": {
     "predeploy": "npm run build:prod",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist node ./dist/server/server.js",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=6GjP-1ayBsFeHWVql35igA node ./bin/dev.js"
