@@ -9,7 +9,7 @@
   object-fit: cover;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .preview {
     flex-basis: 190px;
     order: 0;

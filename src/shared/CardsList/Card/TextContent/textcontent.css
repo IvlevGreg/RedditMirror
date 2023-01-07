@@ -4,11 +4,13 @@
   padding: 7px 0 0;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .textContent {
     display: flex;
     flex-flow: row wrap;
-    flex-basis: 540px;
+    flex-basis: 100%;
+    flex-shrink: 1;
+    max-width: 540px;
     order: 1;
     margin: 0 0 0 38px;
     flex-flow: column-reverse nowrap;
@@ -21,6 +23,6 @@
 
 @media all and (min-width: 1540px) {
   .textContent {
-    flex-basis: 672px;
+    max-width: 672px;
   }
 }

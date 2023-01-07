@@ -19,7 +19,7 @@
   height: max-content;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .karmaCounter {
     display: flex;
     align-items: center;

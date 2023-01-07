@@ -10,4 +10,27 @@
   background-color: #e5e5e5;
 }
 .buttonsItem {
+@media screen and (min-width: 520px) {
+  .buttonsItem:nth-child(n + 2) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 612px) {
+  .buttonsItem:nth-child(n + 2) {
+    display: block;
+  }
+  .buttonsItem:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 972px) {
+  .buttonsItem:nth-child(n + 4) {
+    display: block;
+  }
+
+  .moreButton {
+    display: none;
+  }
 }

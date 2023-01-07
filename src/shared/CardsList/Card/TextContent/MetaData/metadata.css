@@ -14,10 +14,13 @@
 .createdAt span {
   color: var(--grey99);
 }
-@media all and (min-width: 1024px) {
+
+@media all and (min-width: 612px) {
   .metaData {
-    flex-flow: row-reverse nowrap;
+    flex-flow: column nowrap;
     justify-content: flex-end;
+    gap: 5px;
+    align-items: flex-start;
     font-size: 14px;
     line-height: 16px;
   }
@@ -29,5 +32,14 @@
 
   .publishedLabel {
     display: inline;
+  }
+}
+
+@media all and (min-width: 748px) {
+  .metaData {
+    flex-flow: row-reverse nowrap;
+    justify-content: flex-end;
+    font-size: 14px;
+    line-height: 16px;
   }
 }
