@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, useEffect, useRef } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { RootState } from '../../redux';
 import { updateComment } from '../../redux/commentsReducer';
@@ -19,6 +25,7 @@ export function CommentForm({
   onClose = NOOP,
 }: IcommentForm) {
   const dispatch = useDispatch();
+  const [isDisabled, setIsDisabled] = useState(true);
   const userNameTemplate = userName ? `${userName},` : '';
   const value = useSelector<RootState, string>((state) => {
     const itemIndex = state.commentsReducer.comments.findIndex(
@@ -33,13 +40,15 @@ export function CommentForm({
 
   function handleChange(e: ChangeEvent<HTMLTextAreaElement>) {
     dispatch(updateComment(e.target.value, postId));
+    if (e.target.value.trim().length > 2) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
   }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-
-    dispatch(updateComment(userNameTemplate, postId));
-    onClose();
   }
 
   function handleCommentClick(e: FormEvent) {
@@ -74,7 +83,11 @@ export function CommentForm({
       ></textarea>
       <div className={styles.buttonsContainer}>
         <CommentAdditionalButtons />
-        <button className={styles.button} onClick={handleCommentClick}>
+        <button
+          className={styles.button}
+          disabled={isDisabled}
+          onClick={handleCommentClick}
+        >
           Комментировать
         </button>
       </div>
