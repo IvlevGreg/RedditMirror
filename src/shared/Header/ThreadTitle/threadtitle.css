@@ -4,9 +4,16 @@
   font-size: 20px;
   line-height: 23px;
   margin: 0 0 15px;
+
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transform: translateX(-110%);
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .threadTitle {
     padding: 0;
     margin: 0 27px 0 0;

@@ -1,11 +1,18 @@
 .sortBlock {
-  background-color: var(--white);
   padding: 11px 20px;
   border-radius: 7px;
-  margin: 0 0 20px;
 }
 
-@media all and (min-width: 1024px) {
+.sortBlock svg {
+  height: 35px;
+  width: 100%;
+}
+
+@media all and (min-width: 612px) {
+  .sortBlock svg {
+    height: 40px;
+  }
+
   .sortBlock {
     background-color: transparent;
     padding: 0;

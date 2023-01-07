@@ -26,7 +26,7 @@
   display: none;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .menuItemDekstop {
     display: flex;
   }

@@ -36,7 +36,7 @@
   color: var(--grey99);
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .username {
     display: flex;
   }

@@ -5,7 +5,7 @@
   justify-content: space-between;
 }
 
-@media all and (min-width: 1024px) {
+@media all and (min-width: 612px) {
   .controls {
     order: 3;
     flex: 0 0;

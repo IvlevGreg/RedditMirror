@@ -55,7 +55,7 @@ export const userRequestAsync = (): ActionThunk => (dispatch, getState) => {
       dispatch(
         userRequestSuccess({
           name: userData.name,
-          iconImg: userData.icon_img,
+          iconImg: userData.snoovatar_img || userData.icon_img,
         })
       );
     })
