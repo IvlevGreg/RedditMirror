@@ -7,9 +7,9 @@ import { ThreadTitle } from './ThreadTitle/ThreadTitle';
 export function Header() {
   return (
     <header className={styles.header}>
+      <SortBlock />
       <SearchBlock />
       <ThreadTitle />
-      <SortBlock />
     </header>
   );
 }
